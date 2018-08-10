@@ -3,7 +3,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('', views.temples, name='temples'),
+    path('', views.TempleListView.as_view(), name='temples'),
+    path('temples/', views.TempleListView.as_view(), name='temples'),
+    path('temple/<str:pk>', views.TempleDetailView.as_view(), name='temple-detail'),
     path('', views.gods, name='gods'),
     ]

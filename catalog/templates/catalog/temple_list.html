@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h3> Temples </h3>
+    	{% if temple_list %}
+   
+	   	<div class="row">
+    	 
+	 	{% for temple in temple_list %}
+        	<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            	<div class="card-h-100">
+            		<a href="{{temple.get_absolute_url}}"><img class="card-img-top rounded" 
+                        src=
+                            {% if temple.profile_picture %}
+                                "{{temple.profile_picture}}"
+                            {% else %}
+                                "http://placehold.it/700x400"
+                            {% endif %}
+
+                        alt="{{temple.name}} height="300" width="400"">
+					</a>
+            		<div class="card-body">
+             			<h3 class="card-title">
+        					<a href="{{ temple.get_absolute_url }}">{{ temple.name }}</a> 
+              			</h3>
+						<p class="card-text"> {{temple.get_short_summary}}</p>
+          			</div>
+          		</div>
+        	</div>
+      {% endfor %}
+
+
+
+	</div>
+    {% else %}
+      <p>There are no temples in this catalog.</p>
+    {% endif %}       
+{% endblock %}
